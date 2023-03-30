@@ -1,0 +1,20 @@
+base_page:
+  uri:
+
+main_page:
+  uri:
+
+sign_in_popap:
+  uri: '#'
+
+account_page:
+  uri: account/
+
+basket_page:
+  uri: checkout/
+
+catalog_page:
+  uri: catalog/
+
+product_page:
+  uri: catalog/{category}/{product}/

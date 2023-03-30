@@ -1,0 +1,13 @@
+local:
+  url: 'http://localhost:4444/wd/hub'
+  version: '107.0'
+  vnc: True
+  video: False
+  timeout: 3m
+
+server:
+  url: 'http://selenoid:4444/wd/hub'
+  version: '107.0'
+  vnc: True
+  video: False
+  timeout: 5m

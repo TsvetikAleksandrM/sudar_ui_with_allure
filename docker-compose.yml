@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  selenoid:
+    image: aerokube/selenoid
+    network_mode: bridge
+    ports:
+      - "4444:4444"
+    volumes:
+      - ".:/etc/selenoid"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui
+    network_mode: bridge
+    links:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
+
+  browser_pulling:
+    image: selenoid/chrome:107.0
+
+  sudar:
+    image: sudar
+    container_name: sudar_ui
+    build: .
+    network_mode: bridge
+    links:
+      - selenoid
+    volumes:
+      - "./results:/sudar/results"
